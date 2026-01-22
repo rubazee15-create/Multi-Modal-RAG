@@ -1,4 +1,4 @@
-# Multi-Modal RAG with Images and Documents
+# Multi-Modal RAG with PDFs containing Images, Tables and Text
 
 This project implements a **Multi-Modal Retrieval-Augmented Generation (RAG)** pipeline. Unlike standard RAG that only handles text, this system uses `unstructured` to partition PDFs into text, tables and images. It then uses **Llama 3.2 Vision** (via Ollama) to generate searchable summaries of complex visual data.
 
@@ -50,5 +50,9 @@ ollama pull llama3.2-vision
 
 ```
 
+### 🏗️ Technical Workflow
+* **Partitioning**: The PDF is processed using the `unstructured` library with a `hi_res` strategy. This breaks the document into atomic elements like `NarrativeText`, `Table`, and `Image`.
+* **AI Summarization**: Since standard embeddings can't "read" an image or a complex table, each mixed-media chunk is sent to **Llama 3.2 Vision**. The model analyzes the visual data and generates a detailed, searchable text description.
+* **Vectorization**: These AI-generated summaries are converted into high-dimensional vectors and stored in a **Qdrant** vector database, enabling semantic search across both text and visual content.
 
 
