@@ -1,0 +1,8 @@
+unstructered[all-docs]
+langchain
+langchain-community
+langchain-qdrant
+langchain-huggingface
+langchain-transformers
+qdrant-client
+langchain-ollama
